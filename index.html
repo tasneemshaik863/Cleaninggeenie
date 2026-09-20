@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cleaning Geniee — Professional Cleaning Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff;
+  --paper-2:#f2f8f8;
+  --paper-3:#e8f2f2;
+  --ink:#0c2430;
+  --ink-2:#4a6874;
+  --line:#dbe7e9;
+  --blue:#0a6e9e;
+  --blue-deep:#063f5c;
+  --green:#12977a;
+  --green-soft:#ddf0ea;
+  --btn-bg:#063f5c;
+  --btn-fg:#ffffff;
+  --shadow: 0 18px 40px -26px rgba(6,63,92,.45);
+  --r-lg:22px;
+  --r-md:14px;
+  --r-sm:9px;
+  box-sizing:border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#081317;
+    --paper-2:#0e1f26;
+    --paper-3:#142a33;
+    --ink:#e9f4f5;
+    --ink-2:#9bb4bd;
+    --line:#1d333d;
+    --blue:#3aa8d6;
+    --blue-deep:#7fd0ea;
+    --green:#36c6a2;
+    --green-soft:#12312c;
+    --btn-bg:#1a7fa8;
+    --btn-fg:#ffffff;
+    --shadow: 0 18px 40px -26px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#081317;
+  --paper-2:#0e1f26;
+  --paper-3:#142a33;
+  --ink:#e9f4f5;
+  --ink-2:#9bb4bd;
+  --line:#1d333d;
+  --blue:#3aa8d6;
+  --blue-deep:#7fd0ea;
+  --green:#36c6a2;
+  --green-soft:#12312c;
+  --btn-bg:#1a7fa8;
+  --btn-fg:#ffffff;
+  --shadow: 0 18px 40px -26px rgba(0,0,0,.8);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top: calc(78px + env(safe-area-inset-top, 0px));}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.logo-word{font-family:"Gabarito","Figtree","Segoe UI",system-ui,sans-serif;font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.3rem,5.4vw,3.85rem)}
+h2{font-size:clamp(1.85rem,3.6vw,2.6rem)}
+h3{font-size:1.18rem;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{width:min(1180px,100% - 44px);margin-inline:auto}
+@media(max-width:640px){.wrap{width:min(1180px,100% - 32px)}}
+.section{padding:clamp(64px,8vw,116px) 0}
+.lede{color:var(--ink-2);max-width:62ch;font-size:1.05rem}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-family:"Figtree",sans-serif;font-weight:600;font-size:.98rem;
+  padding:.85rem 1.5rem;border-radius:100px;border:1.5px solid transparent;
+  text-decoration:none;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-primary:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-green{background:var(--green);color:#052a22}
+.btn-green:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-light{background:#fff;color:#063f5c}
+.btn-light:hover{transform:translateY(-2px)}
+.btn-outline-light{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-outline-light:hover{background:rgba(255,255,255,.12)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.btn:hover{transform:none}}
+
+/* ---------- header ---------- */
+.header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .25s;
+}
+.header.is-stuck{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;gap:1.6rem;height:78px}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:none}
+.logo-mark{width:34px;height:34px}
+.logo-word{font-size:1.24rem;letter-spacing:-.03em}
+.logo-word span{font-weight:500;color:var(--ink-2)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{
+  text-decoration:none;font-size:.96rem;font-weight:500;color:var(--ink-2);
+  padding:.35rem 0;position:relative;transition:color .18s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;
+  background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .22s ease;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{display:flex;align-items:center;gap:.9rem}
+.nav-phone{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);white-space:nowrap}
+.nav-phone small{display:block;font-weight:400;font-size:.72rem;color:var(--ink-2);line-height:1.2}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:.5rem;cursor:pointer;color:var(--ink)}
+.mobile-menu{display:none;border-top:1px solid var(--line);background:var(--paper);padding:.6rem 0 1.2rem}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;text-decoration:none;padding:.72rem 0;border-bottom:1px solid var(--line);font-weight:500}
+.mobile-menu .btn{margin-top:1rem;width:100%;justify-content:center}
+@media(max-width:940px){
+  .nav-links{display:none}
+  .nav-cta .btn{display:none}
+  .burger{display:inline-flex;margin-left:auto}
+  .nav-cta{margin-left:0}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(40px,5vw,72px) 0 clamp(56px,7vw,96px);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-30% 40% 40% -20%;
+  background:radial-gradient(closest-side,var(--green-soft),transparent 70%);
+  opacity:.9;pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(30px,4vw,64px);align-items:center;position:relative}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.trust-pill{
+  display:inline-flex;align-items:center;gap:.5rem;background:var(--paper-2);
+  border:1px solid var(--line);border-radius:100px;padding:.4rem .9rem .4rem .45rem;
+  font-size:.86rem;color:var(--ink-2);font-weight:500;margin-bottom:1.5rem;
+}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
+.hero h1{margin-bottom:1.15rem;max-width:15ch}
+.hero .lede{margin-bottom:2rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2.4rem}
+.hero-stats{display:flex;gap:2.4rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.5rem}
+.stat b{display:block;font-family:"Gabarito",sans-serif;font-size:1.65rem;line-height:1.1;letter-spacing:-.02em}
+.stat span{font-size:.86rem;color:var(--ink-2)}
+
+/* before / after */
+.reveal{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper-2);
+  aspect-ratio:4/3;
+}
+.reveal-layer{position:absolute;inset:0}
+.reveal-layer svg{width:100%;height:100%;display:block}
+.layer-dirty{filter:saturate(.3) brightness(.84) contrast(.92)}
+.layer-clean{clip-path:inset(0 calc(100% - var(--pos,55%)) 0 0)}
+.layer-dirty .sparkles{display:none}
+.layer-clean .grime{display:none}
+.reveal-range{
+  position:absolute;inset:0;width:100%;height:100%;margin:0;
+  -webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize;z-index:3;
+}
+.reveal-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;background:transparent;cursor:ew-resize}
+.reveal-range::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent;cursor:ew-resize}
+.reveal-handle{
+  position:absolute;top:0;bottom:0;left:var(--pos,55%);width:2px;background:#fff;
+  box-shadow:0 0 0 1px rgba(6,63,92,.25);z-index:2;pointer-events:none;
+}
+.reveal-knob{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;background:#fff;color:#063f5c;
+  display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(6,63,92,.5);
+}
+.reveal-tag{
+  position:absolute;bottom:16px;z-index:2;font-size:.76rem;font-weight:600;
+  padding:.3rem .7rem;border-radius:100px;background:rgba(255,255,255,.94);color:#063f5c;
+  pointer-events:none;
+}
+.tag-before{left:16px}
+.tag-after{right:16px;background:#063f5c;color:#fff}
+.reveal-hint{margin-top:.85rem;font-size:.85rem;color:var(--ink-2);text-align:center}
+
+/* ---------- services ---------- */
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.sec-head p{max-width:46ch}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.chip{
+  border:1px solid var(--line);background:transparent;color:var(--ink-2);
+  padding:.5rem 1.05rem;border-radius:100px;font:inherit;font-size:.92rem;font-weight:500;
+  cursor:pointer;transition:all .18s;
+}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip[aria-pressed="true"]{background:var(--btn-bg);border-color:var(--btn-bg);color:var(--btn-fg)}
+.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px}
+.card{
+  border:1px solid var(--line);border-radius:var(--r-md);padding:1.5rem 1.4rem 1.35rem;
+  background:var(--paper);position:relative;overflow:hidden;
+  transition:border-color .22s, transform .22s, box-shadow .22s;
+}
+.card::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.card:hover{border-color:color-mix(in srgb,var(--blue) 40%,var(--line));transform:translateY(-4px);box-shadow:var(--shadow)}
+.card:hover::after{transform:scaleX(1)}
+.card-icon{
+  width:46px;height:46px;border-radius:12px;background:var(--paper-2);
+  display:grid;place-items:center;margin-bottom:1.1rem;color:var(--blue);
+}
+.card-icon svg{width:24px;height:24px}
+.card h3{margin-bottom:.4rem}
+.card p{font-size:.93rem;color:var(--ink-2);line-height:1.55}
+.card-meta{margin-top:1rem;font-size:.8rem;color:var(--ink-2);display:flex;gap:.9rem;flex-wrap:wrap}
+.card-meta span{display:inline-flex;align-items:center;gap:.35rem}
+.card-meta svg{width:14px;height:14px;opacity:.75}
+.card.hidden{display:none}
+
+/* ---------- why ---------- */
+.why{background:var(--paper-2)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;margin-top:2.4rem}
+.why-item{background:var(--paper);padding:1.7rem 1.4rem}
+.why-item svg{width:26px;height:26px;color:var(--green);margin-bottom:.9rem}
+.why-item h3{font-size:1.04rem;margin-bottom:.35rem}
+.why-item p{font-size:.9rem;color:var(--ink-2);line-height:1.55}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,44px);margin-top:3rem;counter-reset:s}
+@media(max-width:800px){.steps{grid-template-columns:1fr;gap:2rem}}
+.step{position:relative;padding-top:2.9rem}
+.step::before{
+  counter-increment:s;content:counter(s,decimal-leading-zero);
+  position:absolute;top:0;left:0;font-family:"Gabarito",sans-serif;font-weight:700;
+  font-size:1rem;color:var(--blue);
+}
+.step::after{
+  content:"";position:absolute;top:.62rem;left:2.4rem;right:0;height:1px;
+  background:linear-gradient(90deg,var(--line),transparent);
+}
+.step:last-child::after{display:none}
+@media(max-width:800px){.step::after{display:none}}
+.step h3{margin-bottom:.5rem;font-size:1.28rem}
+.step p{color:var(--ink-2);font-size:.96rem}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about p + p{margin-top:1rem}
+.about .lede{margin-top:1.4rem}
+.badge-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}
+.badge{
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;font-weight:500;
+  border:1px solid var(--line);border-radius:100px;padding:.45rem .9rem;color:var(--ink-2);
+}
+.badge svg{width:15px;height:15px;color:var(--green)}
+.about-art{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper-2)}
+.about-art svg{display:block;width:100%;height:auto}
+
+/* ---------- cta band ---------- */
+.band{
+  background:linear-gradient(115deg,var(--blue-deep),#0a6e9e 55%,#12977a);
+  border-radius:var(--r-lg);color:#fff;padding:clamp(34px,5vw,62px);
+  display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.band::before{
+  content:"";position:absolute;right:-60px;top:-80px;width:320px;height:320px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.band h2{max-width:18ch;position:relative}
+.band p{color:rgba(255,255,255,.82);margin-top:.7rem;max-width:44ch;position:relative}
+.band-actions{display:flex;gap:.8rem;flex-wrap:wrap;position:relative}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px);margin-top:2.6rem}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+.contact-list{list-style:none;padding:0;margin:0;display:grid;gap:1.35rem}
+.contact-list li{display:flex;gap:.9rem;align-items:flex-start}
+.ci{width:40px;height:40px;flex:none;border-radius:11px;background:var(--paper-2);display:grid;place-items:center;color:var(--blue)}
+.ci svg{width:19px;height:19px}
+.contact-list h4{font-size:.88rem;font-weight:600;color:var(--ink-2);margin:0 0 .1rem;font-family:"Figtree",sans-serif;letter-spacing:0}
+.contact-list a,.contact-list p{text-decoration:none;font-weight:500;font-size:1.02rem}
+.contact-list a:hover{color:var(--blue)}
+.hours{margin-top:1.8rem;padding:1.1rem 1.2rem;border:1px dashed var(--line);border-radius:var(--r-md);font-size:.92rem;color:var(--ink-2)}
+.hours b{color:var(--ink);font-weight:600}
+form{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(22px,3vw,34px)}
+.field{margin-bottom:1.1rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:540px){.row2{grid-template-columns:1fr}}
+label{display:block;font-size:.88rem;font-weight:600;margin-bottom:.4rem}
+input,select,textarea{
+  width:100%;padding:.8rem .95rem;border:1px solid var(--line);border-radius:var(--r-sm);
+  background:var(--paper);color:var(--ink);font:inherit;font-size:.96rem;transition:border-color .18s,box-shadow .18s;
+}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 18%,transparent)}
+.err{display:none;font-size:.82rem;color:#c2412d;margin-top:.35rem;font-weight:500}
+:root[data-theme="dark"] .err{color:#ff9d8a}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid textarea,.field.invalid select{border-color:#c2412d}
+form .btn{width:100%;justify-content:center;margin-top:.4rem}
+.form-note{font-size:.82rem;color:var(--ink-2);margin-top:.9rem;text-align:center}
+.sent{
+  border:1px solid var(--green);background:var(--green-soft);border-radius:var(--r-md);
+  padding:1.3rem;display:none;
+}
+.sent.show{display:block}
+.sent h3{margin-bottom:.4rem;color:var(--ink)}
+.sent p{font-size:.94rem;color:var(--ink-2)}
+.sent button{margin-top:1rem}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:clamp(60px,8vw,110px);padding:clamp(44px,5vw,64px) 0 0}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1.2fr 1fr;gap:2.4rem}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h4{font-family:"Figtree",sans-serif;font-size:.86rem;font-weight:600;color:var(--ink-2);margin:0 0 1rem;letter-spacing:.01em}
+.foot-links{list-style:none;padding:0;margin:0;display:grid;gap:.6rem}
+.foot-links a{text-decoration:none;font-size:.94rem;color:var(--ink-2);transition:color .18s}
+.foot-links a:hover{color:var(--blue)}
+.foot-about p{font-size:.94rem;color:var(--ink-2);margin-top:1rem;max-width:34ch}
+.socials{display:flex;gap:.6rem;margin-top:1.3rem}
+.socials a{
+  width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;color:var(--ink-2);transition:all .18s;
+}
+.socials a:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.socials svg{width:17px;height:17px}
+.foot-bottom{
+  border-top:1px solid var(--line);margin-top:3rem;padding:1.4rem 0 2rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.86rem;color:var(--ink-2);
+}
+.wa-float{
+  position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;
+  width:54px;height:54px;border-radius:50%;background:#25D366;color:#06301f;
+  display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.45);
+  text-decoration:none;transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float svg{width:28px;height:28px}
+
+/* one page-load moment, hero only */
+.rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.22,.7,.3,1) forwards}
+.rise:nth-child(2){animation-delay:.07s}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero-visual{opacity:0;animation:rise .8s .18s cubic-bezier(.22,.7,.3,1) forwards}
+@media(prefers-reduced-motion:reduce){.rise,.hero-visual{opacity:1;transform:none;animation:none}}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Cleaning Geniee home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect width="40" height="40" rx="11" fill="#063f5c"/>
+        <path d="M20 9c4.6 4.6 7 8.2 7 11.6A7 7 0 0 1 13 20.6C13 17.2 15.4 13.6 20 9z" fill="#12977a"/>
+        <path d="M20 14.5c2.3 2.6 3.4 4.4 3.4 6.1a3.4 3.4 0 0 1-6.8 0c0-1.7 1.1-3.5 3.4-6.1z" fill="#8fe7d2"/>
+        <circle cx="29.5" cy="12" r="1.6" fill="#8fe7d2"/>
+      </svg>
+      <span class="logo-word">Cleaning <span>Geniee</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+919885691666">+91 98856 91 666<small>TTD Road, Rajamahendravaram</small></a>
+      <a class="btn btn-primary" href="#contact">Book a service</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu wrap" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#why">Why us</a>
+    <a href="#how">How it works</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-primary" href="#contact">Book a service</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="trust-pill rise"><span class="dot"></span> Serving Rajamahendravaram &amp; East Godavari · Insured teams</p>
+        <h1 class="rise">Professional cleaning services you can trust</h1>
+        <p class="lede rise">From a one-room dusting to a full post-construction clean, we send trained, background-checked teams with commercial-grade equipment — and we don't leave until the space passes our own checklist.</p>
+        <div class="hero-actions rise">
+          <a class="btn btn-primary" href="#contact">Book a service</a>
+          <a class="btn btn-ghost" href="#contact">Contact us</a>
+        </div>
+        <div class="hero-stats rise">
+          <div class="stat"><b>2,400+</b><span>Homes &amp; offices cleaned</span></div>
+          <div class="stat"><b>13</b><span>Specialist services</span></div>
+          <div class="stat"><b>48 hrs</b><span>Re-clean guarantee</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="reveal" id="reveal" style="--pos:55%">
+          <div class="reveal-layer layer-dirty" id="layerDirty"></div>
+          <div class="reveal-layer layer-clean" id="layerClean"></div>
+          <div class="reveal-handle" aria-hidden="true">
+            <span class="reveal-knob">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg>
+            </span>
+          </div>
+          <span class="reveal-tag tag-before">Before</span>
+          <span class="reveal-tag tag-after">After</span>
+          <input class="reveal-range" id="revealRange" type="range" min="0" max="100" value="55" aria-label="Drag to compare before and after cleaning">
+        </div>
+        <p class="reveal-hint">Drag the handle to see the difference a deep clean makes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Our services</h2>
+          <p class="lede" style="margin-top:.8rem">Every job is quoted on the actual space, not a generic rate card. Pick what you need — or tell us the problem and we'll recommend the right clean.</p>
+        </div>
+        <a class="btn btn-ghost" href="#contact">Get a free quote</a>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter services">
+        <button class="chip" data-filter="all" aria-pressed="true">All services</button>
+        <button class="chip" data-filter="home" aria-pressed="false">Homes</button>
+        <button class="chip" data-filter="commercial" aria-pressed="false">Commercial</button>
+        <button class="chip" data-filter="exterior" aria-pressed="false">Outdoor &amp; utility</button>
+      </div>
+
+      <div class="services" id="serviceGrid"></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section why" id="why">
+    <div class="wrap">
+      <h2>Why people keep calling us back</h2>
+      <p class="lede" style="margin-top:.8rem">Cleaning is a service you have to let into your home. We've built the business around making that an easy decision.</p>
+      <div class="why-grid" id="whyGrid"></div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="lede" style="margin-top:.8rem">Three steps, no site-visit fee, no obligation to book after the quote.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Choose a service</h3>
+          <p>Call, WhatsApp or fill the form with your space and what needs attention. We'll confirm the scope and share a fixed price the same day.</p>
+        </div>
+        <div class="step">
+          <h3>Schedule a visit</h3>
+          <p>Pick a slot that suits you, including weekends. You'll get the supervisor's name and number before the team arrives.</p>
+        </div>
+        <div class="step">
+          <h3>Enjoy a clean space</h3>
+          <p>We walk the space with you at the end. Anything you're not happy with gets redone free within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2>About Cleaning Geniee</h2>
+        <p class="lede">We started in 2016 with two people, one van and a simple frustration: cleaning services that showed up late, cut corners and disappeared when something went wrong.</p>
+        <p style="margin-top:1.1rem;color:var(--ink-2)">Today we're a team of 40 trained cleaners serving homes, offices, showrooms and newly handed-over apartments. Every cleaner is police-verified and trained in-house on surface safety — what's right for Italian marble is wrong for engineered wood, and knowing the difference is the job.</p>
+        <p style="margin-top:1rem;color:var(--ink-2)">We use pH-balanced, child- and pet-safe products, bring our own water and power backup where needed, and price the work before we start so there are no surprises at the end.</p>
+        <div class="badge-row">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Police-verified staff</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Insured work</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Eco-safe products</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> Fixed pricing</span>
+        </div>
+      </div>
+      <div class="about-art" id="aboutArt"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>Ready for a cleaner, healthier space?</h2>
+          <p>Tell us the size of the space and when you're free. You'll have a fixed quote back within a few hours.</p>
+        </div>
+        <div class="band-actions">
+          <a class="btn btn-light" href="#contact">Book now</a>
+          <a class="btn btn-outline-light" href="https://wa.me/919885692666?text=Hi%20Cleaning%20Geniee%2C%20I%27d%20like%20a%20quote" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 10a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.6 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2z"/></svg>
+            WhatsApp us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p class="lede" style="margin-top:.8rem">Quotes are free. If we're not the right fit for your job, we'll tell you that too.</p>
+
+      <div class="contact-grid">
+        <div>
+          <ul class="contact-list">
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div><h4>Phone</h4><a href="tel:+919885691666">+91 98856 91 666</a></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 10a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.6 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2z"/></svg></span>
+              <div><h4>WhatsApp</h4><a href="https://wa.me/919885692666" target="_blank" rel="noopener">Message us on +91 98856 92 666</a></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+              <div><h4>Email</h4><a href="mailto:cleaninggeniee.co@gmail.com">cleaninggeniee.co@gmail.com</a></div>
+            </li>
+            <li>
+              <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><h4>Location</h4><p>46-1-12/12, TTD Road,<br>Rajamahendravaram, East Godavari,<br>Andhra Pradesh 533101</p>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=46-1-12%2F12%2C%20TTD%20Road%2C%20Rajamahendravaram%2C%20Andhra%20Pradesh%20533101" target="_blank" rel="noopener" style="font-size:.9rem;color:var(--blue)">Get directions</a></div>
+            </li>
+          </ul>
+          <div class="hours">
+            <b>Working hours</b><br>
+            Monday to Saturday, 8:00 am – 8:00 pm<br>
+            Sunday, 9:00 am – 5:00 pm · Emergency cleans on request
+          </div>
+        </div>
+
+        <div>
+          <form id="bookingForm" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Ravi Kumar">
+                <span class="err">Enter your name so we know who to ask for.</span>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 90000 12345">
+                <span class="err">Enter a phone number with at least 10 digits.</span>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="email">Email <span style="font-weight:400;color:var(--ink-2)">(optional)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+                <span class="err">That email address looks incomplete.</span>
+              </div>
+              <div class="field">
+                <label for="service">Service needed</label>
+                <select id="service" name="service"></select>
+                <span class="err">Choose the service you need.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Tell us about the space</label>
+              <textarea id="message" name="message" placeholder="3 BHK near TTD Road, handover cleaning after painting. Free next Saturday morning."></textarea>
+              <span class="err">A line or two about the space helps us quote accurately.</span>
+            </div>
+            <button class="btn btn-primary" type="submit">Request my quote</button>
+            <p class="form-note">We reply within a few hours during working hours.</p>
+          </form>
+
+          <div class="sent" id="sentPanel" role="status">
+            <h3>Request received</h3>
+            <p id="sentBody"></p>
+            <button class="btn btn-ghost" type="button" id="sendAnother">Send another request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="#top" class="logo" aria-label="Cleaning Geniee home">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <rect width="40" height="40" rx="11" fill="#063f5c"/>
+            <path d="M20 9c4.6 4.6 7 8.2 7 11.6A7 7 0 0 1 13 20.6C13 17.2 15.4 13.6 20 9z" fill="#12977a"/>
+            <path d="M20 14.5c2.3 2.6 3.4 4.4 3.4 6.1a3.4 3.4 0 0 1-6.8 0c0-1.7 1.1-3.5 3.4-6.1z" fill="#8fe7d2"/>
+            <circle cx="29.5" cy="12" r="1.6" fill="#8fe7d2"/>
+          </svg>
+          <span class="logo-word">Cleaning <span>Geniee</span></span>
+        </a>
+        <p>Deep cleaning, maintenance and specialist care for homes and commercial spaces across Rajamahendravaram, Kakinada and East Godavari. Find us online at cleaninggeniee.com.</p>
+        <div class="socials">
+          <a href="https://instagram.com/cleaninggeniee" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://facebook.com/cleaninggeniee" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h2.5l.5-3H13v-2a1 1 0 0 1 1-1z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5a2.5 2.5 0 0 0 1.8-1.8C22 15.2 22 12 22 12zM10 15V9l5 3z"/></svg></a>
+          <a href="https://wa.me/919885692666" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 10a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.6 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul class="foot-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why choose us</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Popular services</h4>
+        <ul class="foot-links" id="footServices"></ul>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <ul class="foot-links">
+          <li><a href="tel:+919885691666">+91 98856 91 666</a></li>
+          <li><a href="https://wa.me/919885692666" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:cleaninggeniee.co@gmail.com">cleaninggeniee.co@gmail.com</a></li>
+          <li style="line-height:1.55;color:var(--ink-2);font-size:.94rem">
+            46-1-12/12, TTD Road,<br>Rajamahendravaram, East Godavari,<br>Andhra Pradesh 533101
+          </li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=46-1-12%2F12%2C%20TTD%20Road%2C%20Rajamahendravaram%2C%20Andhra%20Pradesh%20533101" target="_blank" rel="noopener">Get directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Cleaning Geniee. All rights reserved.</span>
+      <span>Prototype site · Privacy policy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919885692666?text=Hi%20Cleaning%20Geniee%2C%20I%27d%20like%20a%20quote" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.9 2.9 0 0 0 7 10a5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9c1.6.6 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2z"/></svg>
+</a>
+
+<script>
+/* ---------------- illustrated scene (no external images) ---------------- */
+const scene = `
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A living space shown before and after a professional clean">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfe6f5"/><stop offset="100%" stop-color="#e8f6f2"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7fbfb"/><stop offset="100%" stop-color="#e6f0f1"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2ebec"/><stop offset="100%" stop-color="#cfdee0"/>
+    </linearGradient>
+    <linearGradient id="shaft" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity=".85"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#wall)"/>
+  <rect y="410" width="800" height="190" fill="url(#floor)"/>
+  <rect y="404" width="800" height="7" fill="#c2d4d6"/>
+
+  <!-- window -->
+  <rect x="96" y="70" width="330" height="300" rx="8" fill="#063f5c"/>
+  <rect x="106" y="80" width="310" height="280" rx="4" fill="url(#sky)"/>
+  <circle cx="360" cy="140" r="34" fill="#ffffff" opacity=".75"/>
+  <path d="M120 300c40-26 70-10 96-34s58-26 94-2 60 12 96-8v104H120z" fill="#bfe0d5" opacity=".75"/>
+  <rect x="255" y="80" width="10" height="280" fill="#063f5c"/>
+  <rect x="106" y="215" width="310" height="10" fill="#063f5c"/>
+
+  <!-- light shaft -->
+  <path class="sparkles" d="M116 90 L420 90 L610 410 L300 410 Z" fill="url(#shaft)" opacity=".55"/>
+
+  <!-- sofa -->
+  <rect x="470" y="250" width="250" height="110" rx="20" fill="#0a6e9e"/>
+  <rect x="452" y="292" width="290" height="96" rx="20" fill="#0d82b8"/>
+  <rect x="486" y="262" width="100" height="70" rx="14" fill="#cfe9f4"/>
+  <rect x="600" y="262" width="100" height="70" rx="14" fill="#cfe9f4"/>
+  <rect x="512" y="270" width="58" height="56" rx="12" fill="#12977a" transform="rotate(-8 541 298)"/>
+  <rect x="470" y="380" width="18" height="26" rx="6" fill="#063f5c"/>
+  <rect x="706" y="380" width="18" height="26" rx="6" fill="#063f5c"/>
+
+  <!-- rug -->
+  <ellipse cx="420" cy="500" rx="250" ry="62" fill="#dceaea"/>
+  <ellipse cx="420" cy="500" rx="190" ry="44" fill="#cfe1e2"/>
+
+  <!-- plant -->
+  <path d="M120 470h74l-10 76h-54z" fill="#0a6e9e"/>
+  <path d="M116 458h82v16h-82z" fill="#063f5c"/>
+  <path d="M157 462c-4-44-28-60-52-66 6 34 24 58 52 66z" fill="#12977a"/>
+  <path d="M159 462c4-48 30-66 56-72-6 36-26 62-56 72z" fill="#16b08e"/>
+  <path d="M158 464c0-30 4-52 12-74-16 18-22 46-12 74z" fill="#0f7f67"/>
+
+  <!-- side table -->
+  <rect x="300" y="400" width="120" height="10" rx="5" fill="#063f5c"/>
+  <rect x="312" y="410" width="8" height="60" fill="#0a6e9e"/>
+  <rect x="400" y="410" width="8" height="60" fill="#0a6e9e"/>
+  <rect x="345" y="366" width="30" height="36" rx="6" fill="#12977a"/>
+
+  <!-- grime (before only) -->
+  <g class="grime" fill="none" stroke="#6b6355" stroke-linecap="round" opacity=".5">
+    <path d="M130 120c40 26 24 60 52 96s10 70 42 118" stroke-width="9" opacity=".35"/>
+    <path d="M300 100c26 40 6 66 26 104s6 76 34 116" stroke-width="7" opacity=".3"/>
+    <path d="M180 250c60 8 96-18 150-6" stroke-width="6" opacity=".3"/>
+    <path d="M470 430c70 12 150 6 220-10" stroke-width="8" opacity=".25"/>
+    <path d="M250 520c80 14 170 10 250-8" stroke-width="10" opacity=".22"/>
+  </g>
+  <g class="grime" fill="#6b6355" opacity=".4">
+    <circle cx="205" cy="160" r="6"/><circle cx="330" cy="200" r="4"/><circle cx="150" cy="330" r="5"/>
+    <circle cx="560" cy="300" r="5"/><circle cx="640" cy="340" r="7"/><circle cx="500" cy="470" r="6"/>
+    <circle cx="380" cy="545" r="5"/><circle cx="690" cy="500" r="6"/><circle cx="240" cy="470" r="4"/>
+    <circle cx="600" cy="230" r="4"/><circle cx="420" cy="330" r="5"/>
+  </g>
+  <rect class="grime" width="800" height="600" fill="#8b7f66" opacity=".16"/>
+
+  <!-- sparkles (after only) -->
+  <g class="sparkles" fill="#ffffff">
+    <path d="M610 150c4 22 10 28 32 32-22 4-28 10-32 32-4-22-10-28-32-32 22-4 28-10 32-32z" opacity=".95"/>
+    <path d="M700 250c3 14 7 18 21 21-14 3-18 7-21 21-3-14-7-18-21-21 14-3 18-7 21-21z" opacity=".85"/>
+    <path d="M245 375c2.4 11 5.6 14 16.8 16.8-11.2 2.8-14.4 5.6-16.8 16.8-2.4-11.2-5.6-14-16.8-16.8 11.2-2.8 14.4-5.6 16.8-16.8z" opacity=".9"/>
+    <path d="M470 120c3 15 7 19 22 22-15 3-19 7-22 22-3-15-7-19-22-22 15-3 19-7 22-22z" opacity=".75"/>
+  </g>
+</svg>`;
+document.getElementById('layerDirty').innerHTML = scene;
+document.getElementById('layerClean').innerHTML = scene;
+document.querySelectorAll('.reveal-layer svg').forEach((s,i)=>{ if(i>0) s.removeAttribute('role'); s.setAttribute('aria-hidden','true'); });
+
+const reveal = document.getElementById('reveal');
+const range = document.getElementById('revealRange');
+range.addEventListener('input', () => reveal.style.setProperty('--pos', range.value + '%'));
+
+/* about illustration */
+document.getElementById('aboutArt').innerHTML = `
+<svg viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two cleaners at work in a bright, freshly cleaned room">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4fafa"/><stop offset="100%" stop-color="#ddeef0"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" fill="url(#bg2)"/>
+  <circle cx="560" cy="130" r="120" fill="#ddf0ea"/>
+  <rect y="400" width="720" height="120" fill="#cfe1e3"/>
+
+  <!-- cleaner 1 -->
+  <rect x="150" y="250" width="96" height="150" rx="26" fill="#0a6e9e"/>
+  <circle cx="198" cy="218" r="34" fill="#f0c9a4"/>
+  <path d="M164 210a34 34 0 0 1 68 0z" fill="#0c2430"/>
+  <rect x="176" y="400" width="26" height="60" rx="10" fill="#063f5c"/>
+  <rect x="210" y="400" width="26" height="60" rx="10" fill="#063f5c"/>
+  <path d="M240 290c40-6 62-30 74-64" stroke="#f0c9a4" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <!-- spray bottle -->
+  <rect x="300" y="196" width="40" height="56" rx="8" fill="#12977a"/>
+  <path d="M312 196v-14h22l12 12" stroke="#063f5c" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <g fill="#8fe7d2"><circle cx="372" cy="176" r="5"/><circle cx="392" cy="164" r="4"/><circle cx="386" cy="190" r="3.5"/></g>
+
+  <!-- cleaner 2 -->
+  <rect x="440" y="268" width="92" height="132" rx="26" fill="#12977a"/>
+  <circle cx="486" cy="238" r="32" fill="#e0ab7e"/>
+  <path d="M454 232a32 32 0 0 1 64 0z" fill="#3a2a1d"/>
+  <rect x="462" y="400" width="26" height="58" rx="10" fill="#063f5c"/>
+  <rect x="496" y="400" width="26" height="58" rx="10" fill="#063f5c"/>
+  <path d="M440 300c-30 4-48 22-56 48" stroke="#e0ab7e" stroke-width="19" stroke-linecap="round" fill="none"/>
+  <!-- mop -->
+  <rect x="368" y="200" width="9" height="210" rx="4" fill="#063f5c" transform="rotate(12 372 305)"/>
+  <rect x="392" y="392" width="86" height="26" rx="10" fill="#0a6e9e"/>
+  <path d="M396 418h78l-8 22h-62z" fill="#cfe9f4"/>
+
+  <!-- bucket -->
+  <path d="M600 330h84l-12 74h-60z" fill="#0a6e9e"/>
+  <rect x="596" y="318" width="92" height="16" rx="8" fill="#063f5c"/>
+  <path d="M606 318c8-28 68-28 76 0" stroke="#063f5c" stroke-width="7" fill="none"/>
+  <g fill="#ffffff" opacity=".9">
+    <path d="M628 120c4 20 9 25 29 29-20 4-25 9-29 29-4-20-9-25-29-29 20-4 25-9 29-29z"/>
+    <path d="M556 210c2.6 13 5.9 16.3 18.9 18.9-13 2.6-16.3 5.9-18.9 18.9-2.6-13-5.9-16.3-18.9-18.9 13-2.6 16.3-5.9 18.9-18.9z"/>
+  </g>
+</svg>`;
+
+/* ---------------- icons ---------------- */
+const I = {
+  spray:'<path d="M9 8h6v13a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/><path d="M11 8V4h4l3 3"/><path d="M20 8v4"/>',
+  building:'<path d="M3 21h18"/><path d="M5 21V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v17"/><path d="M15 9h4a1 1 0 0 1 1 1v11"/><path d="M9 7h2M9 11h2M9 15h2"/>',
+  glass:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/><path d="m6 9 3-3"/>',
+  duster:'<path d="M4 20 14 10"/><path d="M13 5c3-3 6-2 7 0s-1 5-4 6c-1 .4-2 .2-3-.8s-1.2-2-.8-3c.2-.8.5-1.5.8-2.2z"/><path d="M6 22l-2-2"/>',
+  home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-7h6v7"/>',
+  sofa:'<path d="M4 12V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M2 14a2 2 0 0 1 2-2 2 2 0 0 1 2 2v3h12v-3a2 2 0 0 1 4 0v5H2z"/>',
+  bed:'<path d="M3 20V8"/><path d="M3 12h18a2 2 0 0 1 2 2v6"/><path d="M7 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/>',
+  kitchen:'<rect x="4" y="9" width="16" height="12" rx="2"/><path d="M4 13h16"/><path d="M8 3v4M12 3v4M16 3v4"/><circle cx="9" cy="17" r="1"/>',
+  chimney:'<path d="M4 10 8 4h8l4 6"/><path d="M4 10h16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M10 19v2M14 19v2"/>',
+  shower:'<path d="M4 20V8a4 4 0 0 1 8 0"/><path d="M9 11h10"/><path d="M14 14v1M17 14v1M11 16v1M17 17v1M14 18v1"/>',
+  terrace:'<path d="M3 21h18"/><path d="M5 21v-8h14v8"/><path d="M9 13v8M15 13v8"/><path d="m5 13 7-5 7 5"/>',
+  tank:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v10c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+  garden:'<path d="M12 21V9"/><path d="M12 12c-4 0-6-2-6-6 4 0 6 2 6 6z"/><path d="M12 15c4 0 6-2 6-6-4 0-6 2-6 6z"/><path d="M8 21h8"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  team:'<path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="9.5" cy="7" r="3"/><path d="M21 19v-1a4 4 0 0 0-3-3.8"/><path d="M16 4.2a3 3 0 0 1 0 5.6"/>',
+  shield:'<path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6z"/><path d="m9 12 2 2 4-4"/>',
+  star:'<path d="m12 3 2.6 5.5 6 .9-4.3 4.3 1 6.1-5.3-2.9-5.3 2.9 1-6.1L3.4 9.4l6-.9z"/>',
+  rupee:'<path d="M7 4h10M7 8h10M7 20l7-8c2.2 0 3-1.5 3-3"/><path d="M7 8c4 0 7 1 7 4H7"/>',
+  heart:'<path d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20z"/>',
+  clockS:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  users:'<path d="M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1"/><circle cx="9.5" cy="7" r="3"/>'
+};
+const icon = (p, cls='') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+
+/* ---------------- services ---------------- */
+const services = [
+  {t:'Post construction deep cleaning', c:'commercial', i:I.spray, d:'Cement haze, paint flecks and grout film removed before handover. Floors, ducts, fittings and glass, room by room.', m:['1–3 days','4–8 cleaners']},
+  {t:'Commercial spaces cleaning', c:'commercial', i:I.building, d:'Offices, clinics, showrooms and retail floors cleaned nightly, weekly or on a contract that fits your shift timings.', m:['Flexible slots','Contract or one-off']},
+  {t:'Glass cleaning', c:'commercial', i:I.glass, d:'Streak-free interior and exterior panes, including high façades with rope access and telescopic poles.', m:['2–5 hrs','Height-trained']},
+  {t:'Home dusting', c:'home', i:I.duster, d:'Regular top-to-bottom dusting of surfaces, fans, skirting, frames and vents. Ideal as a fortnightly visit.', m:['2–3 hrs','1–2 cleaners']},
+  {t:'Home deep cleaning', c:'home', i:I.home, d:'The full reset: every room scrubbed, degreased, sanitised and detailed, from ceiling corners to floor grout.', m:['5–8 hrs','3–4 cleaners']},
+  {t:'Sofa & carpet cleaning', c:'home', i:I.sofa, d:'Hot water extraction and fabric-safe shampoo that lifts stains, odour and dust mites without soaking the foam.', m:['2–4 hrs','Dries in 4–6 hrs']},
+  {t:'Mattress cleaning', c:'home', i:I.bed, d:'UV and vacuum treatment plus deep extraction to clear allergens, sweat residue and dust mites from every layer.', m:['45 min per bed','Same-day use']},
+  {t:'Kitchen deep cleaning', c:'home', i:I.kitchen, d:'Degreasing of cabinets, backsplash, hob, shelves and sink, with interiors emptied, wiped and reset.', m:['3–5 hrs','2 cleaners']},
+  {t:'Chimney cleaning', c:'home', i:I.chimney, d:'Filters, baffles, motor housing and duct opening dismantled, de-greased and refitted so suction returns to normal.', m:['1–2 hrs','Parts checked']},
+  {t:'Washroom cleaning', c:'home', i:I.shower, d:'Normal upkeep or intense descaling for hard water stains, grout discolouration and fittings that have gone dull.', m:['1–3 hrs','Normal or intense']},
+  {t:'Terrace cleaning', c:'exterior', i:I.terrace, d:'Moss, bird droppings, leaf litter and drain blockages cleared, then pressure washed and left to dry clear.', m:['3–5 hrs','Pressure wash']},
+  {t:'Water tank cleaning', c:'exterior', i:I.tank, d:'Overhead and underground tanks drained, scrubbed, vacuumed and sanitised, with before-and-after photos shared.', m:['2–4 hrs','Food-safe sanitiser']},
+  {t:'Gardening & yard cleaning', c:'exterior', i:I.garden, d:'Trimming, weeding, lawn tidying and green-waste removal to keep the outside as cared-for as the inside.', m:['Half day','Waste removed']}
+];
+
+const grid = document.getElementById('serviceGrid');
+grid.innerHTML = services.map(s => `
+  <article class="card" data-cat="${s.c}">
+    <div class="card-icon">${icon(s.i)}</div>
+    <h3>${s.t}</h3>
+    <p>${s.d}</p>
+    <div class="card-meta">
+      <span>${icon(I.clock)} ${s.m[0]}</span>
+      <span>${icon(I.users)} ${s.m[1]}</span>
+    </div>
+  </article>`).join('');
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    const f = chip.dataset.filter;
+    document.querySelectorAll('.card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+    });
+  });
+});
+
+/* why choose us */
+const why = [
+  {i:I.team, t:'Professional team', d:'Police-verified, uniformed cleaners trained in-house on surfaces, chemicals and safety before their first job.'},
+  {i:I.shield, t:'Quality cleaning', d:'Every visit ends against a written checklist signed off by the supervisor, not by eye.'},
+  {i:I.clockS, t:'Reliable service', d:'Fixed arrival windows and a supervisor number you can call. If we run late, you hear it from us first.'},
+  {i:I.rupee, t:'Affordable pricing', d:'Quoted on the actual space and confirmed before we start. No add-ons invented at the end.'},
+  {i:I.heart, t:'Customer satisfaction', d:'Anything you flag within 48 hours gets re-cleaned free. That promise is why most of our work is repeat.'}
+];
+document.getElementById('whyGrid').innerHTML = why.map(w => `
+  <div class="why-item">${icon(w.i)}<h3>${w.t}</h3><p>${w.d}</p></div>`).join('');
+
+/* footer + select */
+document.getElementById('footServices').innerHTML = services.slice(0,6)
+  .map(s => `<li><a href="#services">${s.t}</a></li>`).join('');
+const select = document.getElementById('service');
+select.innerHTML = '<option value="">Select a service</option>' +
+  services.map(s => `<option>${s.t}</option>`).join('') + '<option>Not sure — please advise</option>';
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* header border on scroll */
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('is-stuck', scrollY > 8), {passive:true});
+
+/* mobile menu */
+const burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+}));
+
+/* form */
+const form = document.getElementById('bookingForm');
+const sent = document.getElementById('sentPanel');
+const setInvalid = (el, bad) => el.closest('.field').classList.toggle('invalid', bad);
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = form.name, phone = form.phone, email = form.email, service = form.service, message = form.message;
+  const digits = phone.value.replace(/\D/g,'');
+  const checks = [
+    [name, name.value.trim().length < 2],
+    [phone, digits.length < 10],
+    [email, email.value.trim() !== '' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())],
+    [service, service.value === ''],
+    [message, message.value.trim().length < 8]
+  ];
+  checks.forEach(([el, bad]) => setInvalid(el, bad));
+  const firstBad = checks.find(([,bad]) => bad);
+  if (firstBad) { firstBad[0].focus(); return; }
+
+  document.getElementById('sentBody').textContent =
+    `Thanks ${name.value.trim().split(' ')[0]} — we have your request for ${service.value.toLowerCase()}. We'll call ${phone.value.trim()} with a fixed quote within a few hours. This is a prototype, so nothing was actually sent.`;
+  form.style.display = 'none';
+  sent.classList.add('show');
+  sent.scrollIntoView({block:'center', behavior:'smooth'});
+});
+
+form.querySelectorAll('input,select,textarea').forEach(el => {
+  el.addEventListener('input', () => el.closest('.field').classList.remove('invalid'));
+});
+document.getElementById('sendAnother').addEventListener('click', () => {
+  form.reset(); form.style.display = ''; sent.classList.remove('show'); form.name.focus();
+});
+</script>
+</body>
+</html>
